@@ -1,0 +1,21 @@
+body {
+    background-color: bisque;
+    color: rgb(69, 87, 38);
+}
+
+div {
+    border: 10px solid rgb(255, 255, 255);
+}
+
+#contenedor {
+    border: 10px solid rgb(160, 169, 32);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+div.elemento {
+    border: 10px solid rgb(19, 47, 122);
+}

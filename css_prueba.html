@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Clase antes de vacaciones</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div id="contenedor">
+        <div class="elemento">Seccion 1</div>
+        <div class="elemento">Seccion 2</div>
+        <div class="elemento">Seccion 3</div>
+        <div class="elemento">Seccion 4</div>
+    </div>
+    <div id="encabezado"></div>
+    <style>
+        
+    </style>
+    <script>
+        /*let t = 1986;
+        const c = 12;
+        console.log(t);
+        let p = {"titulo": "hola", "autor": "diego"};
+        console.log(p.autor);
+        let d = document.createElement("p");
+        d.textContent = "hola";
+        document.getElementById("encabezado").appendChild(d);
+        document.getElementById("encabezado").setAttribute("style", "background-color: yellow;");*/
+
+        async function obtenerJSON() {
+            const respuesta = await fetch('http://openlibrary.org/subjects/love.json?pusblished_in=1500-1600');
+            const datos = await respuesta.json();
+            let d = document.createElement("p");
+            //Romeo y julieta
+            d.textContent = datos.works[4].title;
+            document.getElementById("encabezado").appendChild(d);
+            console.log(datos);
+
+        }
+
+        obtenerJSON();
+    </script>
+</body>
+</html>
