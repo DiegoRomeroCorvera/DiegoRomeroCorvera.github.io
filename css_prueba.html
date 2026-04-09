@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Clase antes de vacaciones</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
     <div id="contenedor">
@@ -10,13 +10,19 @@
         <div class="elemento">Seccion 2</div>
         <div class="elemento">Seccion 3</div>
         <div class="elemento">Seccion 4</div>
+
     </div>
     <div id="encabezado"></div>
+
+    <button id="btnLibro3">Obtener libro 3</button>
+    <button id="btnArtista1">Obtener artista 1</button>
+    <button id="btnArtista2">Obtener artista 2</button>
     <style>
         
     </style>
     <script>
-        /*let t = 1986;
+        /*
+        let t = 1986;
         const c = 12;
         console.log(t);
         let p = {"titulo": "hola", "autor": "diego"};
@@ -24,20 +30,49 @@
         let d = document.createElement("p");
         d.textContent = "hola";
         document.getElementById("encabezado").appendChild(d);
-        document.getElementById("encabezado").setAttribute("style", "background-color: yellow;");*/
+        document.getElementById("encabezado").setAttribute("style", "background-color: yellow;");
+        */
 
-        async function obtenerJSON() {
+        let d = document.createElement("p");
+
+        async function obtenerJSON(i) {
             const respuesta = await fetch('http://openlibrary.org/subjects/love.json?pusblished_in=1500-1600');
             const datos = await respuesta.json();
-            let d = document.createElement("p");
-            //Romeo y julieta
-            d.textContent = datos.works[4].title;
+            d.textContent = datos.works[i].title;
             document.getElementById("encabezado").appendChild(d);
+            img.src = "";
             console.log(datos);
+        }
+
+        let img = document.createElement("img");
+
+        async function obtenerArtista(artistName) {
+            const respuesta = await fetch('https://www.theaudiodb.com/api/v1/json/123/search.php?s=' + artistName);
+            const datos = await respuesta.json();
+            d.textContent = datos.artists[0].strBiographyES;
+            document.getElementById("encabezado").appendChild(d);
+            img.src = datos.artists[0].strArtistThumb;
+            document.getElementById("encabezado").appendChild(img);
+            console.log(datos);
+
 
         }
 
-        obtenerJSON();
+        obtenerJSON(4);
+
+        document.getElementById("btnLibro3").addEventListener("click", function () {
+            obtenerJSON(3);
+        });
+
+        //Biografia e imagen del artista
+        document.getElementById("btnArtista1").addEventListener("click", function () {
+            obtenerArtista("ColdPlay");
+        });
+
+        document.getElementById("btnArtista2").addEventListener("click", function () {
+            obtenerArtista("the beatles");
+        });
+
     </script>
 </body>
 </html>
