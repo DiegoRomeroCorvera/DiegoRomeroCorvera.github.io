@@ -22,6 +22,8 @@
         img {
             width: 300px;
             border: 8px solid pink;
+            display: block;
+            margin: 10px 0;
         }
         marquee {
             font-size: 25px;
@@ -37,149 +39,143 @@
 <marquee>🚨 tarea completada ilegalmente 🚨</marquee>
 
 <div class="box">
-<h2>HTML</h2>
+    <h2>HTML</h2>
 
-<h3>Introduction</h3>
+    <h3>Introduction</h3>
 
-<p><b>What is HTML?</b> HTML is the structure of a webpage. It tells the browser what each part of the content means, such as headings, paragraphs, lists, sections, and tables.</p>
+    <p><b>What is HTML?</b> HTML is the structure of a webpage. It tells the browser what each part of the content means, such as headings, paragraphs, lists, sections, and tables.</p>
 
-<p><b>Explain the head and the body tags.</b></p>
-<p>The &lt;head&gt; tag contains information about the webpage that is not shown directly on the page. It usually includes the title, character set, links to stylesheets, and metadata.</p>
-<p>The &lt;body&gt; tag contains all the visible content of the webpage, such as text, images, buttons, lists, and tables.</p>
-
+    <p><b>Explain the head and the body tags.</b></p>
+    <p>The &lt;head&gt; tag contains information about the webpage that is not shown directly on the page. It usually includes the title, character set, links to stylesheets, and metadata.</p>
+    <p>The &lt;body&gt; tag contains all the visible content of the webpage, such as text, images, buttons, lists, and tables.</p>
 </div>
 
 <div class="box">
-<h3>Basic Tags</h3>
+    <h3>Basic Tags</h3>
 
-<p><b>Explain the section, article, aside, header, footer tag?</b></p>
-<p>&lt;header&gt;: Contains the top part of a page or section, usually a logo, title, or navigation.</p>
-<p>&lt;section&gt;: Groups related content together in a section.</p>
-<p>&lt;article&gt;: Represents independent content, like a blog post or news article.</p>
-<p>&lt;aside&gt;: Contains extra or side content, like related links or notes.</p>
-<p>&lt;footer&gt;: Contains the bottom part of a page or section, like copyright or contact info.</p>
+    <p><b>Explain the section, article, aside, header, footer tag?</b></p>
+    <p>&lt;header&gt;: Contains the top part of a page or section, usually a logo, title, or navigation.</p>
+    <p>&lt;section&gt;: Groups related content together in a section.</p>
+    <p>&lt;article&gt;: Represents independent content, like a blog post or news article.</p>
+    <p>&lt;aside&gt;: Contains extra or side content, like related links or notes.</p>
+    <p>&lt;footer&gt;: Contains the bottom part of a page or section, like copyright or contact info.</p>
 
-<p><b>Create an unordered list. Create an ordered list.</b></p>
+    <p><b>Create an unordered list. Create an ordered list.</b></p>
 
-<ul>
-    <li>Apple</li>
-    <li>Banana</li>
-    <li>Orange</li>
-</ul>
+    <ul>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Orange</li>
+    </ul>
 
-<ol>
-    <li>Wake up</li>
-    <li>Eat breakfast</li>
-    <li>Go to school</li>
-</ol>
+    <ol>
+        <li>Wake up</li>
+        <li>Eat breakfast</li>
+        <li>Go to school</li>
+    </ol>
 
-<p><b>Create a basic table using html.</b></p>
+    <p><b>Create a basic table using html.</b></p>
 
-<table border="1">
-<tr>
-<th>Name</th>
-<th>Age</th>
-<th>City</th>
-</tr>
-<tr>
-<td>Diego</td>
-<td>20</td>
-<td>Guadalajara</td>
-</tr>
-<tr>
-<td>Ana</td>
-<td>21</td>
-<td>Monterrey</td>
-</tr>
-</table>
-
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+        </tr>
+        <tr>
+            <td>Diego</td>
+            <td>20</td>
+            <td>Guadalajara</td>
+        </tr>
+        <tr>
+            <td>Ana</td>
+            <td>21</td>
+            <td>Monterrey</td>
+        </tr>
+    </table>
 </div>
 
 <div class="box">
-<h2>2. CSS</h2>
+    <h2>2. CSS</h2>
 
-<h3>Introduction</h3>
+    <h3>Introduction</h3>
 
-<p><b>What is CSS?</b> CSS (Cascading Style Sheets) is a language used to style HTML elements. It controls how a webpage looks, including colors, fonts, spacing, borders, and layout.</p>
+    <p><b>What is CSS?</b> CSS (Cascading Style Sheets) is a language used to style HTML elements. It controls how a webpage looks, including colors, fonts, spacing, borders, and layout.</p>
 
-<p><b>What is the purpose of CSS?</b> The purpose of CSS is to make webpages visually organized and attractive. It separates content from design, so HTML handles structure and CSS handles appearance.</p>
+    <p><b>What is the purpose of CSS?</b> The purpose of CSS is to make webpages visually organized and attractive. It separates content from design, so HTML handles structure and CSS handles appearance.</p>
 
-<p><b>How do you apply a CSS to an HTML (explain the 3 options)</b></p>
+    <p><b>How do you apply a CSS to an HTML (explain the 3 options)</b></p>
 
-<p><b>Inline CSS</b></p>
-<p>&lt;p style="color: blue;"&gt;Hello&lt;/p&gt;</p>
+    <p><b>Inline CSS</b></p>
+    <p>&lt;p style="color: blue;"&gt;Hello&lt;/p&gt;</p>
 
-<p><b>Internal CSS</b></p>
-<p>&lt;style&gt; p { color: blue; } &lt;/style&gt;</p>
+    <p><b>Internal CSS</b></p>
+    <p>&lt;style&gt; p { color: blue; } &lt;/style&gt;</p>
 
-<p><b>External CSS</b></p>
-<p>&lt;link rel="stylesheet" href="styles.css"&gt;</p>
+    <p><b>External CSS</b></p>
+    <p>&lt;link rel="stylesheet" href="styles.css"&gt;</p>
 
-<p>Example styles.css:</p>
-<p>p { color: blue; }</p>
+    <p>Example styles.css:</p>
+    <p>p { color: blue; }</p>
 
-<p><b>What is a selector? What is a CSS rule?</b></p>
-<p>A selector is the part of CSS that chooses which HTML element will be styled.</p>
-<p>A CSS rule is the complete instruction made of a selector and a declaration block.</p>
+    <p><b>What is a selector? What is a CSS rule?</b></p>
+    <p>A selector is the part of CSS that chooses which HTML element will be styled.</p>
+    <p>A CSS rule is the complete instruction made of a selector and a declaration block.</p>
 
-<p>Example:</p>
-<p>p { color: red; font-size: 16px; }</p>
+    <p>Example:</p>
+    <p>p { color: red; font-size: 16px; }</p>
 
-<p><b>Play the 32 levels of:</b></p>
-<p>[IMAGEN 1 AQUI]</p>
-
+    <p><b>Play the 32 levels of:</b></p>
+    <img src="/imagenes/image.png" alt="CSS Diner 32 levels">
 </div>
 
 <div class="box">
-<h3>Basic CSS</h3>
+    <h3>Basic CSS</h3>
 
-<p><b>Explain:</b></p>
+    <p><b>Explain:</b></p>
 
-<p><b>Tag Selector:</b> Selects all elements of a specific tag. Example: p { color: red; }</p>
+    <p><b>Tag Selector:</b> Selects all elements of a specific tag. Example: p { color: red; }</p>
 
-<p><b>Class Selector:</b> Selects elements with a specific class using ".". Example: .box { color: blue; }</p>
+    <p><b>Class Selector:</b> Selects elements with a specific class using ".". Example: .box { color: blue; }</p>
 
-<p><b>Tag and Class Selector:</b> Selects a specific tag with a class. Example: p.box { color: green; }</p>
+    <p><b>Tag and Class Selector:</b> Selects a specific tag with a class. Example: p.box { color: green; }</p>
 
-<p><b>Id Selector:</b> Selects a unique element using "#". Example: #main { color: yellow; }</p>
+    <p><b>Id Selector:</b> Selects a unique element using "#". Example: #main { color: yellow; }</p>
 
-<p><b>What is a class? What is an id? How are they related to CSS?</b></p>
-<p>A class is a reusable attribute that can be applied to multiple elements. An id is unique and used for a single element. Both are used in CSS to apply styles.</p>
+    <p><b>What is a class? What is an id? How are they related to CSS?</b></p>
+    <p>A class is a reusable attribute that can be applied to multiple elements. An id is unique and used for a single element. Both are used in CSS to apply styles.</p>
 
-<p><b>Explain the CSS Box Model? Show an example.</b></p>
-<p>The box model consists of content, padding, border, and margin.</p>
-<p>Example:</p>
-<p>div { margin: 10px; padding: 20px; border: 5px solid red; }</p>
+    <p><b>Explain the CSS Box Model? Show an example.</b></p>
+    <p>The box model consists of content, padding, border, and margin.</p>
+    <p>Example:</p>
+    <p>div { margin: 10px; padding: 20px; border: 5px solid red; }</p>
 
-<p><b>Explain the media queries</b></p>
-<p>Media queries are used to make webpages responsive by applying styles depending on screen size.</p>
-<p>Example:</p>
-<p>@media (max-width: 600px) { body { background-color: gray; } }</p>
-
+    <p><b>Explain the media queries</b></p>
+    <p>Media queries are used to make webpages responsive by applying styles depending on screen size.</p>
+    <p>Example:</p>
+    <p>@media (max-width: 600px) { body { background-color: gray; } }</p>
 </div>
 
 <div class="box">
-<h3>Layout CSS</h3>
+    <h3>Layout CSS</h3>
 
-<p><b>Explain display: grid</b></p>
-<p>Grid is a layout system that allows creating rows and columns to organize content.</p>
+    <p><b>Explain display: grid</b></p>
+    <p>Grid is a layout system that allows creating rows and columns to organize content.</p>
 
-<p><b>Explain display: flex</b></p>
-<p>Flexbox is a layout system used to align and distribute items in a container.</p>
+    <p><b>Explain display: flex</b></p>
+    <p>Flexbox is a layout system used to align and distribute items in a container.</p>
 
-<p><b>Play the 24 levels of:</b></p>
-<p>[IMAGEN 2 AQUI]</p>
-
+    <p><b>Play the 24 levels of:</b></p>
+    <img src="/imagenes/image2.png" alt="CSS Diner 24 levels">
 </div>
 
 <div class="box">
-<h3>Create an html challenge</h3>
+    <h3>Create an html challenge</h3>
 
-<p>Create a webpage that includes a header, a list, a table, and styled elements using CSS.</p>
+    <p>Create a webpage that includes a header, a list, a table, and styled elements using CSS.</p>
 
-<p><b>Apply a css framework to your wikileaks clone page. (Screenshot)</b></p>
-<p>[IMAGEN 3 AQUI]</p>
-
+    <p><b>Apply a css framework to your wikileaks clone page. (Screenshot)</b></p>
+    <img src="/imagenes/image3.png" alt="WikiLeaks clone with CSS framework">
 </div>
 
 <marquee direction="right">👁️ aprobada automaticamente 👁️</marquee>
