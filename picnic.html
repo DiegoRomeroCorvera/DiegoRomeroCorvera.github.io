@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+
+    <style>
+        .flex.demo{
+        margin: .2em 0;
+        background: #dbe2dc;
+        text-align: center;
+        }
+        .flex.demo div {
+        border:.1em solid pink;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="tabs three">
+        <input id='tab-1' type='radio' name='tabgroupB' checked />
+        <label class="pseudo button toggle" for="tab-1">¿Cómo vas con tu reto?</label>
+        <input id='tab-2' type='radio' name='tabgroupB'>
+        <label class="pseudo button toggle" for="tab-2">¿Qué te parece lo más complicado de tu reto?</label>
+        <input id='tab-3' type='radio' name='tabgroupB'>
+        <div class="row">
+            <div>
+            <p>Vamos bien, ya tenemos definida la idea y comnezamos con todos los diagramas y archivo srs.</p>
+            </div>
+
+            <div>
+            <p>Lo mas complicado es entender lo que el cliente quiere, ya que son muchos puntos de vista y a veces no es tan claro.</p>
+            </div>
+        </div>
+    </div>
+
+    <button id="un_boton">Haz algo</button>
+    <button id="like_boton">Like</button>
+    <div class="flex two four-1200 demo">
+        <div id="bio">1</div>
+        <div id="imagen">2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+    
+    </div>
+
+    <div id="imagen">
+        <img id="img_perro"/>
+    </div>
+    <script>
+    let un_boton;
+    let image_id = "";
+
+    document.addEventListener("DOMContentLoaded", function() {
+        un_boton = document.getElementById("un_boton");
+        un_boton.addEventListener("click", irPorAlgo);
+        //console.log("DOM listo");
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        like_boton = document.getElementById("like_boton");
+        like_boton.addEventListener("click", votar);
+        //console.log("DOM listo");
+    });
+
+    async function votar() {
+        try {
+            console.log(image_id);
+            const respuesta = await fetch("https://api.thedogapi.com/v1/votes",      {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": "live_pqRLJv7tFzbxwgxS5maV2VQrQv34ZebEbNQyMaatXEjwgDa9WOvEl70GfPqcQHvC"
+            },
+            body: JSON.stringify({
+                image_id: image_id,
+                value: 1
+            })
+        });
+            if (!respuesta.ok) {
+                console.log("Error");
+                //throw new Error("Error");
+            }
+            const data = await respuesta.json();
+            console.log(data);
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
+    }
+
+    async function irPorAlgo() {
+        try {
+            const respuesta = await fetch("https://api.thedogapi.com/v1/images/search?limit=1",      {
+            method: "GET", 
+            headers: {
+                "x-api-key": "live_pqRLJv7tFzbxwgxS5maV2VQrQv34ZebEbNQyMaatXEjwgDa9WOvEl70GfPqcQHvC"
+            }
+
+        });
+            if (!respuesta.ok) {
+                console.log("Error");
+                //throw new Error("Error");
+            }
+            const data = await respuesta.json();
+            const url = data[0].url;
+            image_id = data[0].id;    
+            console.log(image_id);
+            const img = document.getElementById("img_perro");
+            img.src = url;
+            console.log(data);
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
+    }
+
+
+     async function obtenerJSON() {
+       // const respuesta = await fetch('');  
+       // const datos = await respuesta.json();
+       // console.log(datos);
+
+        //const textoArtista = document.createElement('p');
+        //textoArtista.textContent = 
+        //biografia.appendChild(textoArtista);
+
+        //const imagenArtista= document.createElement('');
+        
+        //imagenArtista.setAttribute('src', '');
+     }
+    </script>
+</body>
+</html>
