@@ -29,3 +29,44 @@ async function fetchArtistBio(artist) {
 
 // Llamada de ejemplo para un artista musical — cambia el nombre por cualquier cantante o grupo.
 fetchArtistBio('Shakira');
+
+const API_KEY = 'Ucq0jpATIciqEgt7y1KusUJfAvZJ4y9ol7i2MrvX';
+
+async function fetchClimaGet() {
+  try {
+    const url = 'https://api.api-ninjas.com/v1/weather?lat=20.6597&lon=-103.3496';
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: { 'X-Api-Key': API_KEY }
+    });
+    if (!response.ok) throw new Error(`Error ${response.status}`);
+    const data = await response.json();
+    console.log('\n[GET] Clima en Guadalajara (API Ninjas):');
+    console.log(data);
+  } catch (err) {
+    console.error('Error en GET:', err.message);
+  }
+}
+
+async function fetchPost() {
+  try {
+    const response = await fetch('https://httpbin.org/post', {
+      method: 'POST',
+      headers: {
+        'X-Api-Key': API_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ ciudad: 'Guadalajara', mensaje: 'prueba POST' })
+    });
+    if (!response.ok) throw new Error(`Error ${response.status}`);
+    const data = await response.json();
+    console.log('\n[POST] httpbin confirmó que recibió estos headers:');
+    console.log({ 'X-Api-Key': data.headers['X-Api-Key'] });
+    console.log('Body enviado:', data.json);
+  } catch (err) {
+    console.error('Error en POST:', err.message);
+  }
+}
+
+fetchClimaGet();
+fetchPost();

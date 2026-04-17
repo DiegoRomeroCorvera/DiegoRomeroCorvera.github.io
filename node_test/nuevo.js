@@ -7,3 +7,4 @@ axios.get('http://datos.imss.gob.mx/api/action/datastore/search.json?resource_id
   .catch(error => {
     console.error('Error:', error);
   });
+
