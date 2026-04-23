@@ -1,23 +1,21 @@
-//Escribe un comentario explicando para qué sirve http
+// Módulo nativo de Node.js para crear servidores HTTP y manejar peticiones y respuestas web
 import http from 'http';
-//Escribe un comentario explicando para qué sirve fs
+// Módulo nativo de Node.js para leer y escribir archivos del sistema de archivos
 import fs from 'fs';
 
 
     //Esta función deberá mostrar deberá mostrar una página HTML 
     //con la bienvenida a tu proyecto
     function darBienvenida(req, res) {
-       //Agrega lo mínimo necesario en bienvenida.html
-       
-      
+      //Agrega lo mínimo necesario en bienvenida.html
       fs.readFile('bienvenida.html', 'utf8', (error, data) => {
         if (error) {
-           //Escribe qué significa el 500 
+           // 500: Error interno del servidor, algo falló al intentar leer el archivo
           res.writeHead(500, { 'Content-Type': 'text/plain' });
           res.end('Oh no!!!!');
           return;
         }
-        //Escribe qué significa el 200
+        // 200: Solicitud exitosa, se encontró y se enviará el archivo correctamente
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(data);
     });
@@ -27,15 +25,14 @@ import fs from 'fs';
     //Esta función deberá enviar un json con los datos de los usuarios
     function getUsuarios(req, res) {
         //Esto representa un objeto JSON de un usuario
-        //Agrega otro usuario
-        const usuarios = {
-            "nombre": "Punk",
-            "saldo": "0",
-          };  
+        const usuarios = [
+            { "nombre": "Punk", "saldo": "0" },
+            { "nombre": "Diego", "saldo": "500" },
+        ];
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      
-      //Escribe qué hace la función stringify y por qué la tenemos que usar
-      res.end(JSON.stringify(mascotas));
+
+      // stringify convierte el objeto JS a texto JSON para poder enviarlo por HTTP, ya que res.end solo acepta strings o buffers
+      res.end(JSON.stringify(usuarios));
     }
 
   
@@ -65,20 +62,60 @@ import fs from 'fs';
         });
       }
 
-    //Esta función deberá enviar un json con los datos de las movimientos
-    function getMoviminientos(req, res) {
-    //Tienes que corregir varias cosas en esta sección
-      res.writeHead(200, { 'Content-Type': 'text/plain' });
-      res.end('Aquí van los datos de los movimientos financieros');
+    //Esta función deberá enviar un json con los datos de los movimientos
+    function getMovimientos(req, res) {
+        const movimientos = [
+            { "tipo": "Depósito", "monto": 500 },
+            { "tipo": "Retiro", "monto": 100 },
+            { "tipo": "Transferencia", "monto": 200 },
+        ];
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(movimientos));
     }
 
     function manejarRuta404(req, res) {                                                                                                                                                                      
       res.writeHead(404, { 'Content-Type': 'text/plain' });
-      //Cambia el mensaje por algo más divertido
-      res.end('Página no encontrada.');
+      res.end('¡Uy! Te perdiste... esta página no existe. 404 🚧');
     }
 
-    //incluye el enlace a la documentación de createServer
+    function mostrarUsuarios(req, res) {
+        fs.readFile('usuarios.html', 'utf8', (error, data) => {
+            if (error) {
+              res.writeHead(500, { 'Content-Type': 'text/plain' });
+              res.end('Oh no!!!!');
+              return;
+            }
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(data);
+        });
+    }
+
+    function mostrarEquipo(req, res) {
+        fs.readFile('equipo.html', 'utf8', (error, data) => {
+            if (error) {
+              res.writeHead(500, { 'Content-Type': 'text/plain' });
+              res.end('Oh no!!!!');
+              return;
+            }
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(data);
+        });
+    }
+
+    function mostrarOpinion(req, res) {
+        fs.readFile('opinion.html', 'utf8', (error, data) => {
+            if (error) {
+              res.writeHead(500, { 'Content-Type': 'text/plain' });
+              res.end('Oh no!!!!');
+              return;
+            }
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(data);
+        });
+    }
+
+    // Crea el servidor HTTP que escucha y responde peticiones según la URL
+    // Documentación: https://nodejs.org/api/http.html#httpcreateserveroptions-requestlistener
     const servidor = http.createServer((req, res) => {
       const url = req.url;
 
@@ -95,25 +132,18 @@ import fs from 'fs';
       else if (url === '/movimientos') {
         mostrarMovimientos(req, res);
       }                                                                                                                                                                             
-      //Agrega una ruta /equipo y su función correspondiente para que muestre el equipo del proyecto
-      //Haz una página equipo.html correspondiente
-      //Escribe el nombre completo y una cualidad que valores en esa persona de tu equipo
-      //Trata de agregar una imagen a equipo.html
-      //Explica si la puedes ver, en caso negativo ¿qué crees que pase?
-
-      //Agrega una ruta /opinion
-      //Haz una página opinion.html
-      // Lee el siguiente artículo y responde ¿Crees que el colonialismo digital es un riesgo para tu carrera profesionl? ¿Para tu vida persona?
-      //¿Qué es el freedombox?
-      //https://www.aljazeera.com/opinions/2019/3/13/digital-colonialism-is-threatening-the-global-south
-      
-      
+      else if (url === '/equipo') {
+        mostrarEquipo(req, res);
+      }
+      else if (url === '/opinion') {
+        mostrarOpinion(req, res);
+      }
       else {
         manejarRuta404(req, res);
       }
     });
 
-    const puerto = 1984;
+    const puerto = 9300;
     servidor.listen(puerto, () => {
       console.log(`Servidor escuchando en el puerto ${puerto}`);
     });
